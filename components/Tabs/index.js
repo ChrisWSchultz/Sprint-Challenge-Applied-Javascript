@@ -17,11 +17,12 @@ function tabComponent(topic) {
     return tabDiv;
 }
 
+let tabs;
 
-let request = axios.get('https://lambda-times-backend.herokuapp.com/topics')
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then( (data) => {
-        let topics = data.data.topics;
-        topics.forEach( (topic) => {
+        tabs = data.data.topics;
+        tabs.forEach( (topic) => {
            topicsElement.appendChild(tabComponent(topic));
         })
     })
